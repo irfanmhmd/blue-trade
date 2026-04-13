@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#001f23",
+                        "surface": "#111415",
+                        "inverse-surface": "#e1e3e4",
+                        "primary": "#00dbec",
+                        "secondary": "#94d3c1",
+                        "tertiary-fixed": "#a3f69c",
+                        "outline-variant": "#3e4949",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary-fixed-dim": "#88d982",
+                        "tertiary": "#88d982",
+                        "secondary-fixed": "#afefdd",
+                        "on-secondary-container": "#86c5b3",
+                        "on-primary-fixed-variant": "#004f55",
+                        "outline": "#879392",
+                        "on-secondary": "#00382e",
+                        "tertiary-container": "#338236",
+                        "surface-dim": "#111415",
+                        "surface-container-high": "#272a2b",
+                        "surface-container-highest": "#323536",
+                        "on-primary-container": "#ebfdff",
+                        "secondary-fixed-dim": "#94d3c1",
+                        "surface-variant": "#323536",
+                        "on-primary": "#00363b",
+                        "primary-container": "#007f89",
+                        "surface-container-lowest": "#0c0f10",
+                        "background": "#111415",
+                        "inverse-on-surface": "#2e3132",
+                        "secondary-container": "#0b5345",
+                        "on-tertiary-container": "#ebffe3",
+                        "on-background": "#e1e3e4",
+                        "inverse-primary": "#006971",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#065043",
+                        "surface-container-low": "#191c1d",
+                        "on-secondary-fixed": "#00201a",
+                        "primary-fixed-dim": "#00dbec",
+                        "on-surface-variant": "#bdc9c8",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e1e3e4",
+                        "primary-fixed": "#88f3ff",
+                        "surface-container": "#1d2021",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#003909",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "surface-tint": "#00dbec",
+                        "surface-bright": "#373a3b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #111415; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .glass-card {
+            background: rgba(50, 53, 54, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .mangrove-gradient {
+            background: linear-gradient(135deg, #00dbec 0%, #007f89 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-[#111415]/80 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00dbec]" data-icon="menu">menu</span>
+<span class="text-xl font-bold tracking-tighter text-[#00dbec] font-['Space_Grotesk']">BlueTrade</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="glass-card px-3 py-1 rounded-full flex items-center gap-2 border border-white/5">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-primary">Connected</span>
+</div>
+<span class="material-symbols-outlined text-slate-400" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="px-6 pt-4 space-y-8">
+<!-- Hero Section -->
+<section class="relative h-48 rounded-xl overflow-hidden flex items-end p-6 group">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-10"></div>
+<img alt="Forest conservation" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="lush green mangrove forest canopy with intricate aerial root systems seen from a high angle in cinematic daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEh4EqI3DiurNuJzRWchdYeySbOvQwEkVSWnhWmKxeDlqkpUYe2aUH2QW8CRp2j4YVw846FYDuQAt92cviVYq_VO93hi6BeEcITRClzZTcrkqNY21QmuQEX6ed5rK5OImHZd17SvpQnvfGtwjtjOX9E1W39aq3wNUIgFrzzWgibG5j0SGHW49iPrJL74paxD3kKBTQfpLfAlZNaq5KR7C_piM3BST1LLPqJUmZEuWSvZWYZmP8OyKxkdykryY5GMi4LuOS5uUAY3A"/>
+<div class="relative z-20">
+<p class="text-primary font-label text-[10px] font-bold tracking-[0.2em] uppercase mb-1">Field Intelligence</p>
+<h1 class="text-3xl font-headline font-bold leading-none tracking-tight">Morning, Staff</h1>
+</div>
+</section>
+<!-- Bento Grid Quick Actions -->
+<section>
+<div class="flex items-baseline justify-between mb-4">
+<h2 class="text-xl font-headline font-bold text-on-surface">Field Operations</h2>
+<span class="text-xs font-label font-semibold text-primary/60 tracking-wider uppercase">Region: Amazonia</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Action 1: Upload Plantation (Large) -->
+<div class="col-span-2 glass-card rounded-xl p-6 relative overflow-hidden group active:scale-95 transition-transform duration-200">
+<div class="mangrove-gradient absolute top-0 right-0 w-24 h-24 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<div class="flex flex-col h-full justify-between">
+<div class="w-12 h-12 rounded-xl mangrove-gradient flex items-center justify-center mb-6 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary text-2xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<div>
+<h3 class="text-lg font-headline font-bold text-on-surface">Upload Plantation</h3>
+<p class="text-sm text-on-surface-variant font-body mt-1">Sync local satellite data to the carbon ledger.</p>
+</div>
+</div>
+</div>
+<!-- Action 2: Capture GPS -->
+<div class="glass-card rounded-xl p-5 flex flex-col justify-between aspect-square active:scale-95 transition-transform duration-200">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h3 class="text-md font-headline font-bold text-on-surface leading-tight">Capture GPS</h3>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-bold mt-2">Precision Sync</p>
+</div>
+</div>
+<!-- Action 3: View History -->
+<div class="glass-card rounded-xl p-5 flex flex-col justify-between aspect-square active:scale-95 transition-transform duration-200">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="history_edu">history_edu</span>
+</div>
+<div>
+<h3 class="text-md font-headline font-bold text-on-surface leading-tight">View History</h3>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-bold mt-2">Audit Logs</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="bg-surface-container-low rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-on-surface font-headline font-bold">Daily Impact</h3>
+<p class="text-xs text-on-surface-variant">Carbon sequestration tracking</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-headline font-bold text-tertiary">12.4t</p>
+<p class="text-[10px] font-bold text-tertiary-container uppercase">CO2 Offset</p>
+</div>
+</div>
+<div class="flex gap-1 h-2 w-full rounded-full overflow-hidden bg-surface-container-highest">
+<div class="h-full w-2/3 mangrove-gradient"></div>
+<div class="h-full w-1/12 bg-tertiary"></div>
+</div>
+</section>
+<!-- Active Tasks -->
+<section class="space-y-4">
+<h2 class="text-lg font-headline font-bold px-1">Active Site Mapping</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest border border-white/5">
+<img alt="Site Alpha" class="w-12 h-12 rounded-lg object-cover" data-alt="top down view of a square plot of young trees in a reforestation project with vibrant green soil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK46mliCLZiJ3A1jGqsry2I7rqOGJd-2IMY_eJxMhXzPjhAwNrzQ5aSDi-bxPP_psf87IPCENXJdn9063AxeklUP0ZAyhIpb9GK6IlHW3RmibLgtrdOq57JpPTUGldo4kH3FlGv-RgGkwroxsJIRc5VdiZTzjqx66OyDGhDvjjUqnJLe-3JXNYt023PNAEAJtgzVk4v7rFXdFkCUD_Ki55d9J2wCrKrGaLoExM3b6jAh4Efu4b0dizP1gS6zreHW9E0qwC1VKRXWs"/>
+<div class="flex-1">
+<h4 class="text-sm font-bold font-headline">Sector 7-G Reforest</h4>
+<p class="text-xs text-on-surface-variant">42 points remaining</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest border border-white/5">
+<img alt="Site Beta" class="w-12 h-12 rounded-lg object-cover" data-alt="misty morning in a dense redwood forest with sunbeams piercing through the foliage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDw7mXBRd2OQOkM4QR_Ju1dhV2TzxYWW0Q8RvSrHvwX5qrDPISaopAksm5o1hvu922zbygVygQmP2y-ODyIhGZwYBIzyf4pBDqAIzK5p41qiT82C5Ca4XgNN9ox7LKzNvGgVT0WfV09SGGIFEyzicOBlHlhSZX-Wz0fcD5caNYkCRJcMeJqIoR2R_Y5_58zGf-ERFtnQYykq_bKkAgFrTdbNhSfBxAiDOVYL_XCqMQ7YWqFnaZvrQMdi5a4Aa5C34s3kJCgLaJ_gQ"/>
+<div class="flex-1">
+<h4 class="text-sm font-bold font-headline">Coastal Mangrove B</h4>
+<p class="text-xs text-on-surface-variant">Validation pending</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="pending">pending</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-[32px] bg-[#111415]/60 backdrop-blur-2xl border-t border-white/5 shadow-[0_-8px_30px_rgb(0,0,0,0.12)] flex justify-around items-center px-4 pb-8 pt-4">
+<!-- Home Active -->
+<a class="flex flex-col items-center justify-center bg-[#007f89]/20 text-[#00dbec] rounded-2xl px-4 py-2 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Manrope'] text-[10px] font-semibold tracking-wide uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 py-2 hover:text-[#00dbec] transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="font-['Manrope'] text-[10px] font-semibold tracking-wide uppercase">History</span>
+</a>
+<div class="relative -top-8">
+<button class="w-14 h-14 rounded-full mangrove-gradient flex items-center justify-center shadow-xl shadow-primary/40 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-slate-500 py-2 hover:text-[#00dbec] transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-semibold tracking-wide uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

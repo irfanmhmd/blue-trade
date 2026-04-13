@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BlueTrade - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-primary-fixed": "#001f23",
+                  "surface": "#111415",
+                  "inverse-surface": "#e1e3e4",
+                  "primary": "#00dbec",
+                  "secondary": "#94d3c1",
+                  "tertiary-fixed": "#a3f69c",
+                  "outline-variant": "#3e4949",
+                  "on-tertiary-fixed": "#002204",
+                  "tertiary-fixed-dim": "#88d982",
+                  "tertiary": "#88d982",
+                  "secondary-fixed": "#afefdd",
+                  "on-secondary-container": "#86c5b3",
+                  "on-primary-fixed-variant": "#004f55",
+                  "outline": "#879392",
+                  "on-secondary": "#00382e",
+                  "tertiary-container": "#338236",
+                  "surface-dim": "#111415",
+                  "surface-container-high": "#272a2b",
+                  "surface-container-highest": "#323536",
+                  "on-primary-container": "#ebfdff",
+                  "secondary-fixed-dim": "#94d3c1",
+                  "surface-variant": "#323536",
+                  "on-primary": "#00363b",
+                  "primary-container": "#007f89",
+                  "surface-container-lowest": "#0c0f10",
+                  "background": "#111415",
+                  "inverse-on-surface": "#2e3132",
+                  "secondary-container": "#0b5345",
+                  "on-tertiary-container": "#ebffe3",
+                  "on-background": "#e1e3e4",
+                  "inverse-primary": "#006971",
+                  "on-error": "#690005",
+                  "on-secondary-fixed-variant": "#065043",
+                  "surface-container-low": "#191c1d",
+                  "on-secondary-fixed": "#00201a",
+                  "primary-fixed-dim": "#00dbec",
+                  "on-surface-variant": "#bdc9c8",
+                  "error": "#ffb4ab",
+                  "on-surface": "#e1e3e4",
+                  "primary-fixed": "#88f3ff",
+                  "surface-container": "#1d2021",
+                  "on-error-container": "#ffdad6",
+                  "error-container": "#93000a",
+                  "on-tertiary": "#003909",
+                  "on-tertiary-fixed-variant": "#005312",
+                  "surface-tint": "#00dbec",
+                  "surface-bright": "#373a3b"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "1.5rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["Space Grotesk"],
+                  "body": ["Manrope"],
+                  "label": ["Manrope"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Manrope', sans-serif; background-color: #111415; }
+    .glass-effect {
+      background: rgba(50, 53, 54, 0.4);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .mangrove-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 4.871L50.258 0.502C49.907 0.151 49.431 0 48.934 0c-0.497 0-0.973 0.151-1.324 0.502L43.24 4.871C42.889 5.222 42.738 5.698 42.738 6.195c0 0.497 0.151 0.973 0.502 1.324l4.369 4.369c0.351 0.351 0.827 0.502 1.324 0.502 0.497 0 0.973-0.151 1.324-0.502l4.369-4.369C54.978 7.168 55.129 6.692 55.129 6.195 55.129 5.698 54.978 5.222 54.627 4.871z' fill='%2300dbec' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-x-hidden">
+<!-- Background Decorative Elements -->
+<div class="fixed inset-0 mangrove-pattern pointer-events-none"></div>
+<div class="fixed -top-24 -left-24 w-96 h-96 bg-primary-container/20 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed top-1/2 -right-48 w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-[150px] pointer-events-none"></div>
+<!-- Header: Suppressed Nav Shell for focused task -->
+<header class="w-full sticky top-0 z-50 bg-gradient-to-b from-[#111415] to-transparent flex justify-between items-center px-6 py-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary text-2xl" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<h1 class="text-xl font-headline font-bold tracking-tighter text-primary">BlueTrade</h1>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-6 pb-20 relative z-10">
+<div class="w-full max-w-md space-y-8">
+<!-- Editorial Intro Section -->
+<div class="space-y-2">
+<span class="text-primary font-label text-xs font-bold tracking-[0.2em] uppercase">The Aquatic Ledger</span>
+<h2 class="text-4xl font-headline font-bold text-on-surface tracking-tight leading-tight">Secure Access to <br/><span class="text-primary">Ecosystem Finance</span></h2>
+<p class="text-on-surface-variant text-sm font-body max-w-[280px]">Connect your digital identity to the future of mangrove-backed liquidity.</p>
+</div>
+<!-- Login Form Card -->
+<div class="glass-effect rounded-xl p-8 shadow-2xl border border-white/5 space-y-6">
+<form class="space-y-5">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block text-xs font-label font-bold text-on-surface-variant tracking-widest uppercase px-1">Email Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors text-xl">alternate_email</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/30 transition-all font-body text-sm" placeholder="name@ecosystem.io" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="block text-xs font-label font-bold text-on-surface-variant tracking-widest uppercase">Password</label>
+<a class="text-[10px] font-label font-bold text-primary/80 uppercase tracking-tighter hover:text-primary transition-colors" href="#">Forgot Access?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors text-xl">lock</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-12 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/30 transition-all font-body text-sm" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<!-- Divider -->
+<div class="flex items-center gap-4 py-2">
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+<span class="text-[10px] font-label font-bold text-outline uppercase tracking-[0.2em]">or</span>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+<!-- Optional Wallet Field -->
+<div class="space-y-2">
+<label class="block text-xs font-label font-bold text-on-surface-variant tracking-widest uppercase px-1">Web3 Identity <span class="text-outline-variant">(Optional)</span></label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors text-xl">account_balance_wallet</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/30 transition-all font-body text-sm" placeholder="0x... or ENS Name" type="text"/>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-4">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+              Sign In to Dashboard
+              <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Secondary Actions -->
+<div class="text-center pt-2">
+<p class="text-sm font-body text-on-surface-variant">New to BlueTrade? <a class="text-primary font-bold hover:underline decoration-primary/30 underline-offset-4" href="#">Create an account</a></p>
+</div>
+</div>
+<!-- Trust Badges / Info -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low/50 rounded-xl p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-label font-bold text-outline-variant uppercase">Security</span>
+<span class="text-xs font-body text-on-surface">AES-256 Auth</span>
+</div>
+</div>
+<div class="bg-surface-container-low/50 rounded-xl p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-label font-bold text-outline-variant uppercase">Ecology</span>
+<span class="text-xs font-body text-on-surface">Net Zero Verified</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Info -->
+<footer class="w-full p-8 text-center space-y-4">
+<div class="flex justify-center gap-6">
+<a class="text-outline hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">help</span></a>
+<a class="text-outline hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+<a class="text-outline hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">settings</span></a>
+</div>
+<p class="text-[10px] font-label font-bold text-outline-variant tracking-widest uppercase">© 2024 BlueTrade Protocol • Built for the Planet</p>
+</footer>
+<!-- Decorative Gradient Blobs (Floating) -->
+<div class="fixed bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+</body></html>

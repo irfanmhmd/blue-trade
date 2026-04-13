@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed": "#001f23",
+                "surface": "#111415",
+                "inverse-surface": "#e1e3e4",
+                "primary": "#00dbec",
+                "secondary": "#94d3c1",
+                "tertiary-fixed": "#a3f69c",
+                "outline-variant": "#3e4949",
+                "on-tertiary-fixed": "#002204",
+                "tertiary-fixed-dim": "#88d982",
+                "tertiary": "#88d982",
+                "secondary-fixed": "#afefdd",
+                "on-secondary-container": "#86c5b3",
+                "on-primary-fixed-variant": "#004f55",
+                "outline": "#879392",
+                "on-secondary": "#00382e",
+                "tertiary-container": "#338236",
+                "surface-dim": "#111415",
+                "surface-container-high": "#272a2b",
+                "surface-container-highest": "#323536",
+                "on-primary-container": "#ebfdff",
+                "secondary-fixed-dim": "#94d3c1",
+                "surface-variant": "#323536",
+                "on-primary": "#00363b",
+                "primary-container": "#007f89",
+                "surface-container-lowest": "#0c0f10",
+                "background": "#111415",
+                "inverse-on-surface": "#2e3132",
+                "secondary-container": "#0b5345",
+                "on-tertiary-container": "#ebffe3",
+                "on-background": "#e1e3e4",
+                "inverse-primary": "#006971",
+                "on-error": "#690005",
+                "on-secondary-fixed-variant": "#065043",
+                "surface-container-low": "#191c1d",
+                "on-secondary-fixed": "#00201a",
+                "primary-fixed-dim": "#00dbec",
+                "on-surface-variant": "#bdc9c8",
+                "error": "#ffb4ab",
+                "on-surface": "#e1e3e4",
+                "primary-fixed": "#88f3ff",
+                "surface-container": "#1d2021",
+                "on-error-container": "#ffdad6",
+                "error-container": "#93000a",
+                "on-tertiary": "#003909",
+                "on-tertiary-fixed-variant": "#005312",
+                "surface-tint": "#00dbec",
+                "surface-bright": "#373a3b"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "1rem",
+                "xl": "1.5rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Space Grotesk"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .camera-overlay-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 33.33% 33.33%;
+        }
+        .shutter-glow {
+            box-shadow: 0 0 20px rgba(0, 219, 236, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body overflow-hidden h-screen w-screen flex flex-col">
+<!-- Top Navigation Anchor (Shared Component) -->
+<nav class="bg-[#111415]/80 backdrop-blur-xl w-full sticky top-0 z-50 flex justify-between items-center px-6 py-4 w-full bg-gradient-to-b from-[#111415] to-transparent shadow-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#00dbec] transition-opacity active:scale-95 duration-200" data-icon="close">close</span>
+<span class="font-['Space_Grotesk'] font-bold tracking-tight text-xl tracking-tighter text-[#00dbec]">BlueTrade</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400 opacity-80 transition-opacity active:scale-95 duration-200" data-icon="flash_on">flash_on</span>
+<span class="material-symbols-outlined text-slate-400 opacity-80 transition-opacity active:scale-95 duration-200" data-icon="settings">settings</span>
+</div>
+</nav>
+<!-- Full Screen Camera Viewport -->
+<main class="relative flex-grow w-full overflow-hidden bg-surface-container-lowest">
+<!-- Mock Camera Background -->
+<div class="absolute inset-0 z-0">
+<img alt="high-resolution view of a dense mangrove forest from a water-level perspective with dappled sunlight through leaves" class="w-full h-full object-cover grayscale-[0.2] contrast-[1.1]" data-alt="high-resolution view of a dense mangrove forest from a water-level perspective with dappled sunlight through leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7ck8AhRgtfkUyuGN2IjdeMYUTdQFgjUh0ML2XXMMJ-vq21YMYuelphWbQLsN_c2qKOwMogAJckT6Kn3lR7FLok8qgj9zv78dEdFxMoLc1dQpQ6s7ZQv-Ryas8kM6Df6i7lzl5BitQZlt4ASerkukCyEq-7cRice4anoqwp8qSRWQgfboyehULKM3qkcbaCnLdd2ScZEWUZeNeuMDVPLmW46bZfe5relIqwuNEqgbZkeZIGMS2KOIXwY8RahAf0npXBvDjMl6CJSU"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+<div class="absolute inset-0 camera-overlay-grid"></div>
+</div>
+<!-- Camera UI Overlays -->
+<div class="relative z-10 h-full w-full p-6 flex flex-col justify-between">
+<!-- Metadata Top Label -->
+<div class="flex flex-col gap-1 items-start">
+<div class="bg-surface/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/5 flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label text-xs font-bold tracking-widest text-primary uppercase">Recording Proof</span>
+</div>
+</div>
+<!-- Focus Bracket (Visual Element) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 pointer-events-none">
+<div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/40 rounded-tl-lg"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 rounded-tr-lg"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/40 rounded-bl-lg"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/40 rounded-br-lg"></div>
+</div>
+<!-- Bottom Data Display -->
+<div class="flex flex-col gap-4">
+<!-- Asymmetric Bento-style metadata -->
+<div class="grid grid-cols-2 gap-3 max-w-sm">
+<div class="bg-surface/60 backdrop-blur-xl p-4 rounded-xl border border-white/5">
+<span class="block font-label text-[10px] text-primary font-bold tracking-widest uppercase mb-1">GPS Location</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="location_on">location_on</span>
+<span class="font-headline font-medium text-sm text-on-surface">24.5502° N, 81.7800° W</span>
+</div>
+</div>
+<div class="bg-surface/60 backdrop-blur-xl p-4 rounded-xl border border-white/5">
+<span class="block font-label text-[10px] text-primary font-bold tracking-widest uppercase mb-1">Blockchain Hash</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="vibration">vibration</span>
+<span class="font-headline font-medium text-sm text-on-surface">0x7F...3B92</span>
+</div>
+</div>
+<div class="bg-surface/60 backdrop-blur-xl p-4 rounded-xl border border-white/5 col-span-2">
+<div class="flex justify-between items-center">
+<div>
+<span class="block font-label text-[10px] text-primary font-bold tracking-widest uppercase mb-1">Current Timestamp</span>
+<span class="font-headline font-medium text-sm text-on-surface">OCT 24, 2023 | 14:32:05 UTC</span>
+</div>
+<span class="material-symbols-outlined text-primary/60" data-icon="schedule">schedule</span>
+</div>
+</div>
+</div>
+<!-- Main Interaction Bar -->
+<div class="flex items-center justify-between gap-6 py-6 px-2">
+<!-- Gallery Preview -->
+<div class="w-14 h-14 rounded-full border-2 border-white/20 overflow-hidden bg-surface-container-high transition-transform active:scale-90">
+<img alt="small square preview of a previous nature photograph featuring ocean waves" class="w-full h-full object-cover opacity-80" data-alt="small square preview of a previous nature photograph featuring ocean waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbCkj2cGR6Ni6XI1xzNaK2bvb-aySgwC7PB7W2tZnPL0Vm8s_fG79ISIeoOBLFdJIz8_CdsfzKcjZhSVjG2YOjPYn3kDj853C6P7qTvQ540O_zL1qyRrZBCs9WsKTIUGxWQklraUGXj2v57AoHIhJPjzcWnqBbgkA3RlZL8S8MEZe4OpSUOmR_XPVV5RZT8r8TzI-4ptcNFt8YyZJ_aZxMmCdNlxI38EV4iFOQvYyQMrxhFEW5ohpAIwWSMeErLvAC55qjPi7L5jc"/>
+</div>
+<!-- Capture Button -->
+<button class="relative w-24 h-24 rounded-full flex items-center justify-center group active:scale-95 transition-transform">
+<div class="absolute inset-0 rounded-full border-4 border-primary/30"></div>
+<div class="absolute inset-1 rounded-full border-2 border-white/80"></div>
+<div class="w-18 h-18 rounded-full bg-gradient-to-br from-primary to-primary-container shutter-glow flex items-center justify-center">
+<div class="w-16 h-16 rounded-full border border-white/20"></div>
+</div>
+</button>
+<!-- Camera Switch -->
+<button class="w-14 h-14 rounded-full bg-surface/40 backdrop-blur-lg flex items-center justify-center text-on-surface transition-transform active:scale-90">
+<span class="material-symbols-outlined text-2xl" data-icon="flip_camera_ios">flip_camera_ios</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Shared Component) -->
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-8 pt-4 bg-[#111415]/60 backdrop-blur-2xl z-50 rounded-t-[32px] border-t border-white/5 shadow-[0_-8px_30px_rgb(0,0,0,0.12)]">
+<div class="flex flex-col items-center justify-center text-slate-500 py-2 hover:text-[#00dbec] transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[10px] font-semibold tracking-wide uppercase">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 py-2 hover:text-[#00dbec] transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="font-['Manrope'] text-[10px] font-semibold tracking-wide uppercase">History</span>
+</div>
+<!-- Active Tab: Camera -->
+<div class="flex flex-col items-center justify-center bg-[#007f89]/20 text-[#00dbec] rounded-2xl px-4 py-2 hover:text-[#00dbec] transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+<span class="font-['Manrope'] text-[10px] font-semibold tracking-wide uppercase">Camera</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 py-2 hover:text-[#00dbec] transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-semibold tracking-wide uppercase">Profile</span>
+</div>
+</div>
+</body></html>
