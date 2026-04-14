@@ -12,6 +12,11 @@ const marketplaceRoutes = require("./routes/marketplaceRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
+
+// Fallback MONGO_URI for Render deployment
+if (!process.env.MONGO_URI) {
+  process.env.MONGO_URI = 'mongodb+srv://bluetrade:Mhmd%401784%40@cluster0.iusdlbn.mongodb.net/?appName=Cluster0';
+}
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });

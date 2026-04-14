@@ -9,7 +9,8 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import * as Assets from './stitch_assets/HtmlAssets';
 
-const API_URL = 'http://10.67.69.211:5000';
+const API_URL = 'https://blue-trade-backend.onrender.com';
+const TUNNEL_HEADERS = { 'bypass-tunnel-reminder': 'true', 'Content-Type': 'application/json' };
 
 const C = {
   bg: '#111415', surface: '#1d2021', surfaceHigh: '#272a2b',
@@ -34,7 +35,10 @@ function NativeLogin({ onLogin }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Login failed');
-      onLogin(data.token, data.user);
+      if (!data.token) throw new Error('No token received');
+      Alert.alert('✅ Login Success', `Welcome ${data.user.name}!\nRole: ${data.user.role}`, [
+        { text: 'Continue', onPress: () => onLogin(data.token, data.user) }
+      ]);
     } catch(e) { setError(e.message); }
     finally { setLoading(false); }
   };
@@ -184,6 +188,11 @@ function UploadScreen({ token, onBack, onSuccess }) {
           <TouchableOpacity onPress={onBack}><Text style={s.backText}>← Back</Text></TouchableOpacity>
           <Text style={s.title}>Upload Plantation</Text>
         </View>
+        <View style={{ backgroundColor: token ? '#88d98222' : '#ffb4ab22', borderRadius: 8, padding: 8, marginBottom: 12, borderWidth: 1, borderColor: token ? '#88d982' : '#ffb4ab' }}>
+          <Text style={{ color: token ? '#88d982' : '#ffb4ab', fontSize: 11, fontWeight: '700' }}>
+            {token ? `✓ Token: ${token.substring(0,20)}...` : '✗ NO TOKEN - Go back and login'}
+          </Text>
+        </View>
 
         <View style={s.card}>
           <Text style={s.label}>Site Photo</Text>
@@ -254,6 +263,14 @@ function UploadScreen({ token, onBack, onSuccess }) {
         <TouchableOpacity style={[s.btnPrimary, loading && { opacity: 0.6 }]}
           onPress={submit} disabled={loading}>
           {loading ? <ActivityIndicator color={C.bg} /> : <Text style={s.btnPrimaryText}>🌿 Submit to Blockchain</Text>}
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[s.btnOutline, { marginTop: 10 }]} onPress={() => {
+          Alert.alert('Debug Info',
+            `Token: ${token ? token.substring(0,30)+'...' : 'NULL'}\nAPI: ${API_URL}\nUser: ${JSON.stringify(token ? 'logged in' : 'not logged in')}`
+          );
+        }}>
+          <Text style={s.btnOutlineText}>🔍 Check Token Status</Text>
         </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
