@@ -61,6 +61,14 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+
+// Keep Render free tier awake by pinging every 14 minutes
+if (process.env.RENDER) {
+  setInterval(() => {
+    require('http').get(`http://localhost:${PORT}/health`, () => {}).on('error', () => {});
+  }, 14 * 60 * 1000);
+}
+
 mongoose
   .connect(process.env.MONGO_URI || '')
   .then(() => {
