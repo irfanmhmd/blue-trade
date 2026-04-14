@@ -1,4 +1,4 @@
-const hre = require("hardhat");
+import hre from "hardhat";
 
 async function main() {
   const Registry = await hre.ethers.getContractFactory("Registry");

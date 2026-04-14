@@ -1,7 +1,9 @@
 const MarketplaceListing = require("../models/MarketplaceListing");
 
 async function getListings(_, res) {
-  const listings = await MarketplaceListing.find({ sold: false }).populate("seller", "name organization");
+  const listings = await MarketplaceListing.find({ sold: false })
+    .populate("seller", "name organization")
+    .sort({ createdAt: -1 });
   return res.json(listings);
 }
 

@@ -1,4 +1,5 @@
 const Plantation = require("../models/Plantation");
+const MarketplaceListing = require("../models/MarketplaceListing");
 const { uploadToIpfs } = require("../services/uploadService");
 const { calculateCredits } = require("../utils/carbonCalculator");
 const { verifySubmission } = require("../services/verificationService");
@@ -40,6 +41,38 @@ async function createPlantation(req, res) {
       previousLatitude: lastSubmission?.latitude,
       previousLongitude: lastSubmission?.longitude
     });
+
+    // ─── AUTOMATION: REGISTER ON CHAIN & LIST IN MARKETPLACE ───
+    try {
+      // Auto-register on blockchain (simulating field staff immediate on-chain submission)
+      await registerAndApprovePlantationOnChain({
+        plantationId: Number(BigInt(`0x${record._id.toString().slice(-8)}`)),
+        ipfsHash: record.ipfsHash,
+        ngoAddress: req.user.walletAddress || "0x0000000000000000000000000000000000000000"
+      });
+
+      // Auto-create Marketplace Listing
+      const listing = await MarketplaceListing.create({
+        projectName: record.plantationName,
+        location: `${record.latitude}° N, ${record.longitude}° E`,
+        creditsAvailable: record.carbonEstimated,
+        pricePerCredit: record.ecosystemType === 'mangrove' ? 15 : 12,
+        seller: req.user._id,
+        imageUrl: record.imageUrl,
+        plantationId: record._id
+      });
+
+      // Emit real-time notification
+      const io = req.app.get("socketio");
+      if (io) {
+        io.emit("new_listing", {
+          ...listing.toObject(),
+          seller: { name: req.user.name, organization: req.user.organization }
+        });
+      }
+    } catch (chainErr) {
+      console.error("Auto-listing failed:", chainErr.message);
+    }
 
     return res.status(201).json({ plantation: record, verification });
   } catch (error) {

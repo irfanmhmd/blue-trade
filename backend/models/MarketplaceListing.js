@@ -9,7 +9,9 @@ const marketplaceListingSchema = new mongoose.Schema(
     seller: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     purchasedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     sold: { type: Boolean, default: false },
-    txHash: { type: String }
+    txHash: { type: String },
+    imageUrl: { type: String },
+    plantationId: { type: mongoose.Schema.Types.ObjectId, ref: "Plantation" }
   },
   { timestamps: true }
 );

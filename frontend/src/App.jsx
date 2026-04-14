@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { io } from "socket.io-client";
 import api from "./services/api";
 import { fetchPlantations, fetchListings, fetchAllListings, approvePlantation, rejectPlantation, buyListing } from "./services/dataService";
 import { WalletProvider, useWallet } from "./context/WalletContext";
@@ -82,6 +83,13 @@ function MarketplaceView() {
 
   useEffect(() => {
     fetchListings().then(setListings).catch(() => {});
+
+    // Listen for real-time listings
+    const socket = io(import.meta.env.VITE_API_URL || "http://localhost:5000");
+    socket.on("new_listing", (newListing) => {
+      setListings(prev => [newListing, ...prev]);
+    });
+    return () => socket.disconnect();
   }, []);
 
   const handleBuy = async (listingId) => {
@@ -245,7 +253,9 @@ function CompanyView() {
         : available.slice(0, 3).map(l => `
           <div class="bg-surface-container-low rounded-xl overflow-hidden">
             <div class="h-48 relative bg-surface-container-high flex items-center justify-center">
-              <span class="material-symbols-outlined text-6xl" style="color:rgba(0,219,236,0.2)">eco</span>
+              ${l.imageUrl ? `<img src="${l.imageUrl}" class="w-full h-full object-cover" />` : `
+                <span class="material-symbols-outlined text-6xl" style="color:rgba(0,219,236,0.2)">eco</span>
+              `}
               <div class="absolute top-4 left-4 px-3 py-1 rounded-full flex items-center gap-2" style="background:rgba(15,18,19,0.8)">
                 <span class="material-symbols-outlined text-xs" style="color:#88d982;font-variation-settings:'FILL' 1">verified</span>
                 <span style="font-size:10px;font-weight:700;color:white;text-transform:uppercase">Verified</span>
@@ -294,10 +304,24 @@ function CompanyView() {
   };
 
   useEffect(() => {
-    Promise.all([fetchListings(), fetchAllListings()])
-      .then(([available, purchased]) => {
-        setTimeout(() => injectData(available, purchased), 300);
-      }).catch(console.error);
+    const loadData = () => {
+      Promise.all([fetchListings(), fetchAllListings()])
+        .then(([available, purchased]) => {
+          setTimeout(() => injectData(available, purchased), 300);
+        }).catch(console.error);
+    };
+
+    loadData();
+
+    // Listen for real-time listings
+    const socket = io(import.meta.env.VITE_API_URL || "http://localhost:5000");
+    socket.on("new_listing", (newListing) => {
+      // Re-fetch or manually update to maintain consistency
+      Promise.all([fetchListings(), fetchAllListings()])
+        .then(([available, purchased]) => injectData(available, purchased));
+    });
+
+    return () => socket.disconnect();
   }, []);
 
   useEffect(() => {
